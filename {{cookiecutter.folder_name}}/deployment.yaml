@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{cookiecutter.solution_name}}
+  labels:
+    app: {{cookiecutter.solution_name}}
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: {{cookiecutter.solution_name}}
+  template:
+    metadata:
+      labels:
+        app: {{cookiecutter.solution_name}}
+    spec:
+      serviceAccountName: {{cookiecutter.service_account}}     
+      containers:
+      - name: {{cookiecutter.solution_name}}
+        image: ghcr.io/constellationbrands/$SOLUTION_NAME
+        env:
+          - name: {{cookiecutter.port}}
+            valueFrom:
+              configMapKeyRef:
+                name: {{cookiecutter.solution_name}}
+                key: {{cookiecutter.port}}
