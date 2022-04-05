@@ -17,7 +17,7 @@ spec:
       serviceAccountName: {{cookiecutter.service_account}}     
       containers:
       - name: {{cookiecutter.solution_name}}
-        image: ghcr.io/constellationbrands/$SOLUTION_NAME
+        image: ghcr.io/constellationbrands/{{cookiecutter.solution_name}}
         env:
           - name: {{cookiecutter.port}}
             valueFrom:
