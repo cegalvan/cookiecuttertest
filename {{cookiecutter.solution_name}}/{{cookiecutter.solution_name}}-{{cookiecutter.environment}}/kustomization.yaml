@@ -1,0 +1,15 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namespace: {{ cookiecutter.namespace }}-{{ cookiecutter.environment }}
+
+resources:
+  - ../base
+
+patchesStrategicMerge:
+- cd-patch.yaml
+
+images:
+- name: ghcr.io/constellationbrands/{{ cookiecutter.app_image_name }}
+  newName: ghcr.io/constellationbrands/{{ cookiecutter.app_image_name }}
+  newTag: {{ cookiecutter.app_image_version }}
