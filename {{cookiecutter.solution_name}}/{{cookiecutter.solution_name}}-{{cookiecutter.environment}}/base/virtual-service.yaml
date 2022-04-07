@@ -1,0 +1,17 @@
+---
+apiVersion: gateway.solo.io/v1
+kind: VirtualService
+metadata:
+  name: {{ cookiecutter.solution_name }}-http
+spec:
+  virtualHost:
+    domains:
+    - '{{ cookiecutter.solution_name }}.sdlc.app.cbrands.com'
+    routes:
+    - matchers:
+      - prefix: /
+      routeAction:
+        single:
+          upstream:
+            name: {{ cookiecutter.namespace }}-{{ cookiecutter.solution_name}}-service-8080
+            namespace: gloo-system
