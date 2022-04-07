@@ -1,0 +1,20 @@
+---
+apiVersion: gateway.solo.io/v1
+kind: VirtualService
+metadata:
+  annotations:
+    link.argocd.argoproj.io/external-link: 'https://{{ cookiecutter.solution_name }}-{{ cookiecutter.environment }}.sdlc.app.cbrands.com'
+  labels:
+    argocd.argoproj.io/instance: {{ cookiecutter.solution_name }}-{{ cookiecutter.environment }} 
+    gateway: https
+  name: {{ cookiecutter.solution_name }}-http
+spec:
+  virtualHost:
+    domains:
+    - '{{ cookiecutter.solution_name }}-{{ cookiecutter.environment }}.sdlc.app.cbrands.com'
+    routes:
+    - routeAction:
+        single:
+          upstream:
+            name: {{ cookiecutter.namespace }}-{{ cookiecutter.environment }}-{{ cookiecutter.solution_name }}-service-8080
+            namespace: gloo-system
