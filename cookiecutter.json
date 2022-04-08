@@ -1,8 +1,12 @@
 {
-	"folder_name": "ookiecutter_folder",
-	"file_name": "cookiecutter_file",
-	"name": "Cesar galvan",
-	"solution_name" : "cookiecutter_solution",
-	"service_account" : "cookiecutter_sa",
-	"port" : "your port?"
+  "solution_name" : "",
+  "namespace" : ["sandbox",  "enterprise"],
+  "environment" : "dev",
+  "app_image_name" : "{{ cookiecutter.solution_name }}",
+  "app_image_version" : "",
+  "folder_name": "ookiecutter_folder",
+  "file_name": "cookiecutter_file",
+  "name": "Cesar galvan",
+  "service_account" : "cookiecutter_sa",
+  "port" : "your port?"
 }
